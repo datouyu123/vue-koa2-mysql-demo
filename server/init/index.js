@@ -1,9 +1,6 @@
 const fs = require('fs');
 const getSqlContentMap = require('./util/get-sql-content-map');
-const {
-  query
-} = require('./util/db');
-
+const {query} = require('./util/db');
 
 // 打印脚本执行日志
 const eventLog = function (err, sqlFile, index) {
