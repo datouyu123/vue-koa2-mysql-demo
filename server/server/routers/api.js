@@ -7,6 +7,7 @@ const apiRouter = new Router()
 
 //checkToken作为中间件存在
 const checkToken = require('./../tokens/checkToken.js')
-apiRouter.post('/signin',userController.signIn)
+apiRouter.post('/signin', userController.signIn)
+apiRouter.post('/signup', userController.signUp)
 
 module.exports = apiRouter
