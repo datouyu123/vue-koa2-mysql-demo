@@ -66,6 +66,11 @@ const user = {
   async createUser (userInfo) {
     let result = await userModel.createUser(userInfo)
     return result
+  },
+  // 根据id获取用户信息
+  async getUserDetailById (id) {
+    let result = await userModel.getUserDetailById(id)
+    return result
   }
 }
 

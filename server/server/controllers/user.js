@@ -4,9 +4,7 @@ const userCode = require('../utils/userCode')
 
 module.exports = {
   /**
-   * @method 
-   * @param  {obejct} ctx 上下文对象
-   * @desc 登录操作
+   * 登录操作
    */
   async signIn(ctx) {
     let formData = ctx.request.body
@@ -21,15 +19,14 @@ module.exports = {
       // 生成token并返回前端
       let token = createToken(userResult.name)
       result.token = token
+      result.id = userResult.id
     } else {
       result.msg = '账号或密码错误'
     }
     ctx.body = result
   },
   /**
-   * @method
-   * @param  {obejct} ctx 上下文对象
-   * @desc 注册
+   * 注册
    */
   async signUp(ctx) {
     let formData = ctx.request.body
@@ -75,5 +72,32 @@ module.exports = {
     }
     ctx.body = result
     return 
+  },
+  /**
+   * 获取个人信息详情
+   */
+  async getUserDetailById(ctx) {
+    let formData = ctx.request.query
+    let result = {
+      ret: -1,
+      msg: '',
+      data: {}
+    }
+    if (formData.id) {
+      let userResult = await userService.getUserDetailById(formData.id)
+      if (userResult) {
+        result.ret = 0
+        result.msg = userCode.SUCCESS
+        result.data = userResult
+      } else {
+        result.ret = -1
+        result.msg = userCode.USERINFO_NOT_EXIST
+      }
+    } else {
+      result.ret = -1
+      result.msg = userCode.PARAM_ERROR
+    }
+    ctx.body = result
+    return
   }
 }

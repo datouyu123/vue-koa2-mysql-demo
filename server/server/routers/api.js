@@ -9,5 +9,6 @@ const apiRouter = new Router()
 const checkToken = require('./../tokens/checkToken.js')
 apiRouter.post('/signin', userController.signIn)
 apiRouter.post('/signup', userController.signUp)
+apiRouter.get('/getUserDetail', checkToken, userController.getUserDetailById)
 
 module.exports = apiRouter

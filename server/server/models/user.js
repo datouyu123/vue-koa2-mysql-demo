@@ -49,8 +49,20 @@ const user = {
     let _sql = "INSERT INTO ?? SET ?"
     let result = await dbUtils.query(_sql, [ 'user_info', options ])
     return result
+  },
+  // 通过id获取user_info数据
+  async getUserDetailById (id) {
+    let _sql = `
+    SELECT * FROM user_info
+    WHERE id = "${id}"
+    LIMIT 1`
+    let result = await dbUtils.query(_sql)
+    if (Array.isArray(result) && result.length > 0) {
+      result = result[0]
+    } else {
+      result = null
+    }
+    return result
   }
-
 }
-
 module.exports = user

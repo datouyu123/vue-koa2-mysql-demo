@@ -9,7 +9,10 @@
    FAIL_EMAIL_IS_EXIST: '邮箱已被注册',
    FAIL_USER_NAME_IS_EXIST: '用户名已被注册',
    SYSTEM_ERROR: '系统错误',
-   SIGN_UP_SUCCESS: '注册成功'
+   SIGN_UP_SUCCESS: '注册成功',
+   SUCCESS: '成功',
+   USERINFO_NOT_EXIST: '用户数据不存在',
+   PARAM_ERROR: '参数错误'
  }
 
  module.exports = userCode
