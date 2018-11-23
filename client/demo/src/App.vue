@@ -1,60 +1,254 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <transition name="fade">
+      <router-view></router-view>;
+    </transition>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  export default {
+    name: 'app',
+    data() {
+      return {}
     }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
+  /* --- reset style --- */
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+  }
 
-h1, h2 {
-  font-weight: normal;
-}
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  html,
+  body {
+    line-height: 1;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  body,
+  html {
+    font-family: 'FZHei-B01S', 'Hiragino Sans GB', 'Microsoft Yahei', 'Helvetica Neue', 'Luxi Sans', 'DejaVu Sans', Tahoma, STHeiti, Arial, Helvetica, sans-serif;
+  }
 
-a {
-  color: #42b983;
-}
+  body {
+    color: #fff;
+    background-color: #373b45;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  blockquote,
+  q {
+    quotes: none;
+  }
+
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none;
+  }
+
+  input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+  }
+
+  /* 清除select箭头 */
+  select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  a {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  ;
+
+  /* router fade */
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0
+  }
+
+  #app {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  /* clear fix */
+  .clearfix:after {
+    content: "\200B";
+    display: block;
+    height: 0;
+    clear: both;
+  }
+
+  .clearfix {
+    *zoom: 1;
+  }
+
+  /* -- media query -- */
+  @media screen and (max-width: 321px) {
+    body {
+      font-size: 16px
+    }
+  }
+
+  @media screen and (min-width: 321px) and (max-width: 400px) {
+    body {
+      font-size: 17px
+    }
+  }
+
+  @media screen and (min-width: 400px) and (max-width: 840px) {
+    body {
+      font-size: 19px
+    }
+  }
+
+  @media screen and (min-width: 840px) {
+    body {
+      font-size: 22px
+    }
+  }
 </style>

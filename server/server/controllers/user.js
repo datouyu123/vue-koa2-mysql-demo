@@ -5,12 +5,17 @@ const userCode = require('../utils/userCode')
 module.exports = {
   /**
    * 登录操作
+   * @param username 
+   * @param password
+   * @return id 用户自增id
+   * @return token
    */
   async signIn(ctx) {
     let formData = ctx.request.body
     let result = {
       ret: -1,
       msg: '',
+      data: {}
     }
     let userResult = await userService.signIn(formData)
     if (userResult) {
@@ -18,8 +23,8 @@ module.exports = {
       result.msg = '登录成功'
       // 生成token并返回前端
       let token = createToken(userResult.name)
-      result.token = token
-      result.id = userResult.id
+      result.data.token = token
+      result.data.id = userResult.id
     } else {
       result.msg = '账号或密码错误'
     }
